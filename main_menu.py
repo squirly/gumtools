@@ -33,9 +33,14 @@ if option == INSTALL:
 elif option == YOCTO:
   from tools import yocto
   SETUP = 'setup'
+  DEPENDS = 'dependencies'
   y = Menu()
   y.query = 'Please choose a task'
-  y.items.append(MenuItem('Install a distro to Micro SD', SETUP))
+  y.items.append(MenuItem('setup Yocto', SETUP))
+  y.items.append(MenuItem('', DEPENDS))
   y.items.append(MenuItem('Exit', ''))
-  if y.show() == SETUP:
+  option = y.show()
+  if option == SETUP:
     yocto.setup(path.join(get_save_path(), 'yocto'))
+  elif option == DEPENDS:
+    yocto.get_dependencies(CommandLine.get_next())
