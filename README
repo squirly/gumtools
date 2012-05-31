@@ -1,0 +1,16 @@
+===USEAGE===
+for auto completion run
+  source bash_completion
+
+./gumtools install [distro] [device] [distro_options]
+  distro - the distro to install
+  device - the /dev/... device to flash onto
+  distro_options - specifies to download the image or select files to flash
+
+./gumtools yocto [option]
+  options:
+    dependencies [distro] - tries to get the needed packages for yocto (may be out of date/use with caution)
+        distro - Ubuntu|Fedora|openSUSE|CentOS
+        See http://www.yoctoproject.org/docs/current/yocto-project-qs/yocto-project-qs.html#the-linux-distro for how to do this manually
+    setup - sets up the build environment
+        

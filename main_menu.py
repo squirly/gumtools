@@ -32,4 +32,10 @@ if option == INSTALL:
   distro.install(sdcard.select_card())
 elif option == YOCTO:
   from tools import yocto
-  yocto.setup(path.join(get_save_path(), 'yocto'))
+  SETUP = 'setup'
+  y = Menu()
+  y.query = 'Please choose a task'
+  y.items.append(MenuItem('Install a distro to Micro SD', SETUP))
+  y.items.append(MenuItem('Exit', ''))
+  if y.show() == SETUP:
+    yocto.setup(path.join(get_save_path(), 'yocto'))

@@ -20,12 +20,12 @@ _distros()
 
 _distro_additional_options()
 {
-  _auto `_python "from distros import init_distro\nif init_distro('$1').can_download():print '-d'"`
+  _auto `_python "from distros import init_distro\nif init_distro('$1').can_download():print '-d '"`
 }
 
 _distro_files()
 {
-  _auto "`_python "from distros import init_distro\nfor file in init_distro('$1').files_needed().keys():print file,"`" "-S ="
+  _auto "`_python "from distros import init_distro\nfor file in init_distro('$1').files_needed().keys():print file,"`" '-S ='
 }
 
 _auto()
@@ -37,6 +37,8 @@ _gumtools()
 {
     export PYTHONPATH=${PYTHONPATH}:"$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
     COMPREPLY=()
+
+
     
     if [ $COMP_CWORD -eq 1 ]; then
       _auto "install yocto"
@@ -47,7 +49,6 @@ _gumtools()
       install)
         if [ $COMP_CWORD -eq 2 ]; then
           _distros
-          distro=${COMP_WORDS[2]}
         else
           distro=${COMP_WORDS[2]}
           if [ $COMP_CWORD -eq 3 ]; then
@@ -56,20 +57,35 @@ _gumtools()
             if [ $COMP_CWORD -eq 4 ]; then
               _distro_additional_options $distro
             fi
+ 
             cur=`_get_cword =`
-            #if [ $cur == *=* ]; then
-            #  cur=${cur#*=}
-            #  _filedir
-            #else
+            if [[ $cur == *=* ]]; then
+              cur=${cur#*=}
+              _filedir
+            else
               _distro_files ${COMP_WORDS[2]}
-            #fi
+              if [[ ${COMP_WORDS[$COMP_CWORD]} != -* ]]; then
+                compopt -o nospace
+              fi
+            fi
           fi
         fi
         ;;
       yocto)
-        COMPREPLY=($(compgen -W "" -- ${COMP_WORDS[COMP_CWORD]}))
+        if [ $COMP_CWORD -eq 2 ]; then
+          _auto "setup dependencies"
+        else
+          case "${COMP_WORDS[2]}" in
+            setup)
+              _auto ""
+            ;;
+            dependencies)
+              _auto "ubuntu fedora opensuse centos"
+            ;;
+          esac
+        fi
         ;;
     esac
    return 0
 } &&
-complete -F _gumtools $nospace $filenames gumtools
+complete -F _gumtools $filenames gumtools
