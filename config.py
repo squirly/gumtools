@@ -5,7 +5,7 @@ class Yocto:
   oe_core_repo = 'git://git.yoctoproject.org/poky.git'
 
   meta_gumstix_name = 'meta-gumstix'
-  meta_gumstix_repo = 'git@github.com:squirly/meta-gumstix.git'
+  meta_gumstix_repo = 'git://github.com/squirly/meta-gumstix.git'
 
   ubuntu_dependencies = ['sed', 'wget', 'subversion', 'git-core', 'coreutils', 'unzip', 'texi2html', 'texinfo', 'libsdl1.2-dev', 'docbook-utils', 'fop', 'gawk', 'python-pysqlite2', 'diffstat', 'make', 'gcc', 'build-essential', 'xsltproc', 'g++', 'desktop-file-utils', 'chrpath', 'libgl1-mesa-dev', 'libglu1-mesa-dev', 'autoconf', 'automake', 'groff', 'libtool', 'xterm', 'libxml-parser-perl']
   fedora_dependencies = ['python', 'm4', 'make', 'wget', 'curl', 'ftp', 'tar', 'bzip2', 'gzip', 'unzip', 'perl', 'texinfo', 'texi2html', 'diffstat', 'openjade', 'docbook-style-dsssl', 'sed', 'docbook-style-xsl', 'docbook-dtds', 'fop', 'xsltproc', 'docbook-utils', 'sed', 'bc', 'eglibc-devel', 'ccache', 'pcre', 'pcre-devel', 'quilt', 'groff', 'linuxdoc-tools', 'patch', 'cmake', 'perl-ExtUtils-MakeMaker', 'tcl-devel', 'gettext', 'chrpath', 'ncurses', 'apr', 'SDL-devel', 'mesa-libGL-devel', 'mesa-libGLU-devel', 'gnome-doc-utils', 'autoconf', 'automake', 'libtool', 'xterm']
