@@ -15,5 +15,5 @@ def aquire():
 def copy(sdcard):
 	clear_dir(sdcard.boot_dir)
 	temp = get_temp_path()
-	for file in files:
+	for file in c.files:
 		sdcard.copy_to_boot(path.join(temp, file))

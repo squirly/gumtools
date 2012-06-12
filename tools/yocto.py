@@ -50,16 +50,16 @@ class Yocto():
   def add_layer(self, name):
     self.add_to_option('BBLAYERS', path.join(self.path, name), 'build/conf/bblayers.conf');
   def set_machine(self, machine):
-    self.set_option('MACHINE', machine, 'build/conf/bblayers.conf')
+    self.set_option('MACHINE', machine, 'build/conf/local.conf')
 
   def add_to_option(self, option, append, file):
     self.re_file(path.join(self.path, 'build/conf/bblayers.conf'),
                  r'((?:.|[\n\r])*' + option + r' *?\??\??= *?"(?:.|[\n\r])*?)("(?:.|[\n\r])*)',
-                 r'\1 '+append+r'\2')
+                 r'\1 ' + append + r'\2')
   def set_option(self, option, value, file):
     self.re_file(path.join(self.path, file),
                  r'((?:.|[\n\r])*\n *' + option + r') *?\??\??= *?".*?"((?:.|[\n\r])*)',
-                 r'\1 = "'+ value +r'"\2')
+                 r'\1 = "'+ value + r'"\2')
   def re_file(self, file, pattern, replace):
     source = open(file).read()
     output = open(file, 'w')
