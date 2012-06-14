@@ -13,6 +13,7 @@ def setup(yocto_path):
   yocto.enter_build_environment()
   yocto.add_layer(c.meta_gumstix_name)
   yocto.set_machine(c.machine)
+  yocto.set_option('PACKAGE_CLASSES', c.package_type, 'build/conf/local.conf')
 
 def get_dependencies(option):
   globals()[option+'_dependencies']()
