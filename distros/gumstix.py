@@ -17,6 +17,6 @@ class Gumstix(StandardDistro):
 		file = 'omap3-' + flavour + '-image-overo.tar.bz2'
 		remote = path.join(server, file)
 		local = path.join(get_temp_path(), file)
-		files['image'] = file
+		files['filesystem'] = file
 		http_download(remote, local)
 		return files

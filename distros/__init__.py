@@ -18,7 +18,7 @@ def init_distro(distro):
   klass_name = distro[0].upper()+distro[1:]
   return getattr(__import__(__name__ + '.' + distro, fromlist=[klass_name]), klass_name)()
 
-class Distro:
+class Distro(object):
   def get_name(self):
     return ''
   def get_description(self):
