@@ -10,8 +10,11 @@ def setup(yocto_path):
   yocto = Yocto(yocto_path)
   yocto.download()
   yocto.download_layer(c.meta_gumstix_repo, c.meta_gumstix_name)
+  yocto.download_layer(c.meta_oe_repo, c.meta_oe_name)
   yocto.enter_build_environment()
   yocto.add_layer(c.meta_gumstix_name)
+  for layer in c.meta_oe_include:
+    yocto.add_layer(path.join(c.meta_oe_name, layer))
   yocto.set_machine(c.machine)
   yocto.set_option('PACKAGE_CLASSES', c.package_type, 'build/conf/local.conf')
 

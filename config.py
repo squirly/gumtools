@@ -7,6 +7,10 @@ class Yocto:
   meta_gumstix_name = 'meta-gumstix'
   meta_gumstix_repo = 'git://github.com/squirly/meta-gumstix.git'
 
+  meta_oe_name = 'meta-openembedded'
+  meta_oe_repo = 'git://git.openembedded.org/meta-openembedded'
+  meta_oe_include = ['meta-oe', 'meta-systemd', 'meta-xfce']
+
   package_type = 'package_deb'
 
   ubuntu_dependencies = ['sed', 'wget', 'subversion', 'git-core', 'coreutils', 'unzip', 'texi2html', 'texinfo', 'libsdl1.2-dev', 'docbook-utils', 'fop', 'gawk', 'python-pysqlite2', 'diffstat', 'make', 'gcc', 'build-essential', 'xsltproc', 'g++', 'desktop-file-utils', 'chrpath', 'libgl1-mesa-dev', 'libglu1-mesa-dev', 'autoconf', 'automake', 'groff', 'libtool', 'xterm', 'libxml-parser-perl']
