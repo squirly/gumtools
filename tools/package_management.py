@@ -4,6 +4,7 @@ class apt_get():
   @staticmethod 
   def install(packages):
     packages.insert(0, 'install')
+    packages.append('-y')
     sudo_call('apt-get', packages)
 
 class yum():
