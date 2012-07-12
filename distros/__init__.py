@@ -41,7 +41,6 @@ class Distro(object):
       while CommandLine.peek_next():
         key, file = CommandLine.get_next().split('=')
         files[params[key]] = file
-    print files
     if None in files.values():
       if download or (self.can_download() and prompt.ask_yes_no('Do you need to download the OS files?', True)):
         files = self.download(files)
