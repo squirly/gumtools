@@ -3,6 +3,7 @@ class Yocto:
   machine = 'overo'
 
   oe_core_repo = 'git://git.yoctoproject.org/poky.git'
+  oe_core_branch = 'denzil'
 
   meta_gumstix_name = 'meta-gumstix'
   meta_gumstix_repo = 'git://github.com/squirly/meta-gumstix.git'

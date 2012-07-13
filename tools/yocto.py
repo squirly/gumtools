@@ -8,9 +8,9 @@ import re
 
 def setup(yocto_path):
   yocto = Yocto(yocto_path)
-  yocto.download()
+  yocto.download(c.oe_core_branch)
   yocto.download_layer(c.meta_gumstix_repo, c.meta_gumstix_name)
-  yocto.download_layer(c.meta_oe_repo, c.meta_oe_name)
+  yocto.download_layer(c.meta_oe_repo, c.meta_oe_name, c.oe_core_branch)
   yocto.enter_build_environment()
   yocto.add_layer(c.meta_gumstix_name)
   for layer in c.meta_oe_include:
@@ -39,12 +39,13 @@ def centos_dependencies():
 class Yocto():
   def __init__(self, directory):
     self.path = path.abspath(path.expanduser(directory))
-  def download(self):
+  def download(self, branch='master'):
     git = Git(self.path)
-    git.clone(c.oe_core_repo)
-  def download_layer(self, repo, name):
+    self.download_layer(c.oe_core_repo, '', branch)
+  def download_layer(self, repo, name, branch='master'):
     git = Git(path.join(self.path, name))
     git.clone(repo)
+    git.checkout(branch)
   def enter_build_environment(self):
     call('cd', [self.path])
     command = ['bash', '-c', 'cd "'+self.path+'";source oe-init-build-env']
